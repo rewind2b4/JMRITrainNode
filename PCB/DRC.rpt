@@ -1,0 +1,581 @@
+** Drc report for /home/nhjr-lab/Documents/MQTTDecoderExpansionBoard/MQTTDecoderExpansionBoard.kicad_pcb **
+** Created on 2024-07-04 21:04:38 **
+
+** Found 128 DRC violations **
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 63.5000 mm): Footprint Text 'GP3' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 58.4200 mm): Footprint Text 'GND' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.0700 mm, 60.9600 mm): Footprint Text 'GP2' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.0700 mm, 55.8700 mm): Footprint Text 'GP1' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 71.1200 mm): Footprint Text 'GND' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 68.3260 mm): Footprint Text 'GP28' of U1
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 68.5800 mm): Footprint Text 'GP5' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 73.6600 mm): Footprint Text 'GP6' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.9700 mm, 78.7400 mm): Footprint Text 'RUN' of U1
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 73.6700 mm): Footprint Text 'GP27' of U1
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 93.9800 mm): Footprint Text 'GP18' of U1
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 71.1200 mm): Footprint Text 'AGND' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 81.2800 mm): Footprint Text 'GP22' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 99.0600 mm): Footprint Text 'GP17' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 101.6000 mm): Footprint Text 'GP16' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 91.4400 mm): Footprint Text 'GP19' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 76.2000 mm): Footprint Text 'GP26' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(153.7700 mm, 83.8200 mm): Footprint Text 'GND' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 88.9000 mm): Footprint Text 'GP20' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(153.7700 mm, 58.4200 mm): Footprint Text 'GND' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.6700 mm, 60.2700 mm): Footprint Text '3V3_EN' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.1700 mm, 55.8800 mm): Footprint Text 'VSYS' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(153.7700 mm, 96.5200 mm): Footprint Text 'GND' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(153.8700 mm, 63.5700 mm): Footprint Text '3V3' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.9700 mm, 64.9700 mm): Footprint Text 'ADC_VREF' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.0240 mm, 86.3700 mm): Footprint Text 'GP21' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(127.8700 mm, 99.0600 mm): Footprint Text 'GP14' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(115.5100 mm, 97.7900 mm): Line on F.Silkscreen
+    @(118.0500 mm, 97.7900 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(115.5100 mm, 97.7900 mm): Line on F.Silkscreen
+    @(118.0500 mm, 97.7900 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 97.7900 mm): Line on F.Silkscreen
+    @(118.1700 mm, 97.7900 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 92.7700 mm): Line on F.Silkscreen
+    @(118.1700 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 92.7700 mm): Line on F.Silkscreen
+    @(120.5900 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 92.7700 mm): Line on F.Silkscreen
+    @(120.5900 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 92.7700 mm): Line on F.Silkscreen
+    @(115.5100 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(127.7700 mm, 91.4400 mm): Footprint Text 'GP12' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(127.9160 mm, 86.3600 mm): Footprint Text 'GP10' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.2700 mm, 76.1700 mm): Footprint Text 'GP7' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.1700 mm, 54.6100 mm): Line on F.Silkscreen
+    @(118.0500 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(120.5900 mm, 92.7700 mm): Line on F.Silkscreen
+    @(120.7100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(120.5900 mm, 54.6100 mm): Line on F.Silkscreen
+    @(118.0500 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(120.7100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(120.5900 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 54.6100 mm): Line on F.Silkscreen
+    @(115.5100 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.0500 mm, 54.6100 mm): Line on F.Silkscreen
+    @(115.5100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 83.8200 mm): Footprint Text 'GND' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(115.5100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(118.0500 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(120.5900 mm, 54.6100 mm): Line on F.Silkscreen
+    @(118.0500 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 96.5200 mm): Footprint Text 'GND' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(115.5100 mm, 115.6300 mm): Line on F.Silkscreen
+    @(118.0500 mm, 115.6300 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(115.5100 mm, 115.6300 mm): Line on F.Silkscreen
+    @(118.0500 mm, 97.7900 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(118.1700 mm, 97.7900 mm): Line on F.Silkscreen
+    @(118.0500 mm, 115.6300 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 78.7400 mm): Footprint Text 'GP8' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 81.2800 mm): Footprint Text 'GP9' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(127.7700 mm, 88.9000 mm): Footprint Text 'GP11' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(127.9160 mm, 93.9800 mm): Footprint Text 'GP13' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(127.9160 mm, 101.6000 mm): Footprint Text 'GP15' of U1
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(128.3300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(128.1700 mm, 66.0400 mm): Footprint Text 'GP4' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(154.9700 mm, 64.9700 mm): Footprint Text 'ADC_VREF' of U1
+    @(156.2700 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(154.6700 mm, 60.2700 mm): Footprint Text '3V3_EN' of U1
+    @(156.2700 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(163.8900 mm, 54.6100 mm): Line on F.Silkscreen
+    @(163.7700 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(163.8900 mm, 54.6100 mm): Line on F.Silkscreen
+    @(163.7700 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(163.7700 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(161.3500 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(163.7700 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(158.6900 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(158.6900 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(158.6900 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(163.7700 mm, 54.6100 mm): Line on F.Silkscreen
+    @(161.2300 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.3500 mm, 54.6100 mm): Line on F.Silkscreen
+    @(161.2300 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(166.4300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(166.3100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(166.4300 mm, 54.6100 mm): Line on F.Silkscreen
+    @(166.3100 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(163.7700 mm, 54.6100 mm): Line on F.Silkscreen
+    @(166.3100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(163.7700 mm, 54.6100 mm): Line on F.Silkscreen
+    @(166.3100 mm, 54.6100 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(166.3100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(163.7700 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 92.7700 mm): Line on F.Silkscreen
+    @(163.7700 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(161.2300 mm, 92.7700 mm): Line on F.Silkscreen
+    @(158.6900 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(163.7700 mm, 92.7700 mm): Line on F.Silkscreen
+    @(166.3100 mm, 92.7700 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(154.2700 mm, 53.2700 mm): Footprint Text 'VBUS' of U1
+    @(153.6100 mm, 53.3400 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 52.0100 mm): Line on F.Silkscreen
+    @(154.2700 mm, 53.2700 mm): Footprint Text 'VBUS' of U1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(153.6100 mm, 54.6100 mm): Line on F.Silkscreen
+    @(154.1700 mm, 55.8800 mm): Footprint Text 'VSYS' of U1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 63.5000 mm): Footprint Text 'GP3' of U1
+    @(127.0000 mm, 63.5000 mm): Through hole pad 5 [Net-(J5-Pad4)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 58.4200 mm): Footprint Text 'GND' of U1
+    @(127.0000 mm, 58.4200 mm): Through hole pad 3 [Net-(J7-Pad3)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.0700 mm, 60.9600 mm): Footprint Text 'GP2' of U1
+    @(127.0000 mm, 60.9600 mm): Through hole pad 4 [Net-(J5-Pad3)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.0700 mm, 55.8700 mm): Footprint Text 'GP1' of U1
+    @(127.0000 mm, 55.8800 mm): Through hole pad 2 [Net-(J5-Pad2)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 71.1200 mm): Footprint Text 'GND' of U1
+    @(127.0000 mm, 71.1200 mm): Through hole pad 8 [Net-(J7-Pad8)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 68.5800 mm): Footprint Text 'GP5' of U1
+    @(127.0000 mm, 68.5800 mm): Through hole pad 7 [Net-(J5-Pad6)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(153.7700 mm, 96.5200 mm): Footprint Text 'GND' of U1
+    @(154.9400 mm, 96.5200 mm): Through hole pad 18 [Net-(J11-Pad18)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 71.1200 mm): Footprint Text 'AGND' of U1
+    @(154.9400 mm, 71.1200 mm): Through hole pad 8 [Net-(J11-Pad8)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 68.3260 mm): Footprint Text 'GP28' of U1
+    @(154.9400 mm, 68.5800 mm): Through hole pad 7 [Net-(J11-Pad7)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 76.2000 mm): Footprint Text 'GP26' of U1
+    @(154.9400 mm, 76.2000 mm): Through hole pad 10 [Net-(J11-Pad10)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 86.3700 mm): Footprint Text 'GP21' of U1
+    @(154.9400 mm, 86.3600 mm): Through hole pad 14 [Net-(J11-Pad14)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(127.8700 mm, 99.0600 mm): Footprint Text 'GP14' of U1
+    @(127.0000 mm, 99.0600 mm): Through hole pad 19 [Net-(J5-Pad15)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(127.7700 mm, 91.4400 mm): Footprint Text 'GP12' of U1
+    @(127.0000 mm, 91.4400 mm): Through hole pad 16 [Net-(J5-Pad13)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(127.9160 mm, 86.3600 mm): Footprint Text 'GP10' of U1
+    @(127.0000 mm, 86.3600 mm): Through hole pad 14 [Net-(J5-Pad11)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.2700 mm, 76.1700 mm): Footprint Text 'GP7' of U1
+    @(127.0000 mm, 76.2000 mm): Through hole pad 10 [Net-(J5-Pad8)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 78.7400 mm): Footprint Text 'GP8' of U1
+    @(127.0000 mm, 78.7400 mm): Through hole pad 11 [Net-(J5-Pad9)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 73.6600 mm): Footprint Text 'GP6' of U1
+    @(127.0000 mm, 73.6600 mm): Through hole pad 9 [Net-(J5-Pad7)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 83.8200 mm): Footprint Text 'GND' of U1
+    @(127.0000 mm, 83.8200 mm): Through hole pad 13 [Net-(J7-Pad13)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 53.3400 mm): Footprint Text 'GP0' of U1
+    @(127.0000 mm, 53.3400 mm): Through hole pad 1 [Net-(J5-Pad1)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(127.7700 mm, 88.9000 mm): Footprint Text 'GP11' of U1
+    @(127.0000 mm, 88.9000 mm): Through hole pad 15 [Net-(J5-Pad12)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 96.5200 mm): Footprint Text 'GND' of U1
+    @(127.0000 mm, 96.5200 mm): Through hole pad 18 [Net-(J7-Pad18)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 81.2800 mm): Footprint Text 'GP9' of U1
+    @(127.0000 mm, 81.2800 mm): Through hole pad 12 [Net-(J5-Pad10)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(127.9160 mm, 93.9800 mm): Footprint Text 'GP13' of U1
+    @(127.0000 mm, 93.9800 mm): Through hole pad 17 [Net-(J5-Pad14)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(127.9160 mm, 101.6000 mm): Footprint Text 'GP15' of U1
+    @(127.0000 mm, 101.6000 mm): Through hole pad 20 [Net-(J5-Pad16)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 99.0600 mm): Footprint Text 'GP17' of U1
+    @(154.9400 mm, 99.0600 mm): Through hole pad 19 [Net-(J11-Pad19)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(153.7700 mm, 83.8200 mm): Footprint Text 'GND' of U1
+    @(154.9400 mm, 83.8200 mm): Through hole pad 13 [Net-(J11-Pad13)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 88.9000 mm): Footprint Text 'GP20' of U1
+    @(154.9400 mm, 88.9000 mm): Through hole pad 15 [Net-(J11-Pad15)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 91.4400 mm): Footprint Text 'GP19' of U1
+    @(154.9400 mm, 91.4400 mm): Through hole pad 16 [Net-(J11-Pad16)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(153.7700 mm, 58.4200 mm): Footprint Text 'GND' of U1
+    @(154.9400 mm, 58.4200 mm): Through hole pad 3 [Net-(J10-Pad1)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.9700 mm, 64.9700 mm): Footprint Text 'ADC_VREF' of U1
+    @(154.9400 mm, 66.0400 mm): Through hole pad 6 [Net-(J11-Pad6)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.9700 mm, 64.9700 mm): Footprint Text 'ADC_VREF' of U1
+    @(154.9400 mm, 63.5000 mm): Through hole pad 5 [Net-(J11-Pad5)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(153.8700 mm, 63.5700 mm): Footprint Text '3V3' of U1
+    @(154.9400 mm, 63.5000 mm): Through hole pad 5 [Net-(J11-Pad5)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.6700 mm, 60.2700 mm): Footprint Text '3V3_EN' of U1
+    @(154.9400 mm, 60.9600 mm): Through hole pad 4 [Net-(J11-Pad4)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.6700 mm, 60.2700 mm): Footprint Text '3V3_EN' of U1
+    @(154.9400 mm, 58.4200 mm): Through hole pad 3 [Net-(J10-Pad1)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.1700 mm, 55.8800 mm): Footprint Text 'VSYS' of U1
+    @(154.9400 mm, 55.8800 mm): Through hole pad 2 [Net-(J11-Pad2)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 101.6000 mm): Footprint Text 'GP16' of U1
+    @(154.9400 mm, 101.6000 mm): Through hole pad 20 [Net-(J11-Pad20)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 93.9800 mm): Footprint Text 'GP18' of U1
+    @(154.9400 mm, 93.9800 mm): Through hole pad 17 [Net-(J11-Pad17)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 81.2800 mm): Footprint Text 'GP22' of U1
+    @(154.9400 mm, 81.2800 mm): Through hole pad 12 [Net-(J11-Pad12)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(153.9700 mm, 78.7400 mm): Footprint Text 'RUN' of U1
+    @(154.9400 mm, 78.7400 mm): Through hole pad 11 [Net-(J11-Pad11)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.0240 mm, 73.6700 mm): Footprint Text 'GP27' of U1
+    @(154.9400 mm, 73.6600 mm): Through hole pad 9 [Net-(J11-Pad9)] of J11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(128.1700 mm, 66.0400 mm): Footprint Text 'GP4' of U1
+    @(127.0000 mm, 66.0400 mm): Through hole pad 6 [Net-(J5-Pad5)] of J7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Rule: board setup constraints silk; Severity: warning
+    @(154.2700 mm, 53.2700 mm): Footprint Text 'VBUS' of U1
+    @(154.9400 mm, 53.3400 mm): Through hole pad 1 [Net-(D1-Pad1)] of J11
+[invalid_outline]: Board has malformed outline (no edges found on Edge.Cuts layer)
+    Local override; Severity: error
+    @(0.0000 mm, 0.0000 mm): PCB
+[courtyards_overlap]: Courtyards overlap
+    Local override; Severity: error
+    @(116.8400 mm, 53.3400 mm): Footprint J10
+    @(119.3800 mm, 53.3400 mm): Footprint J2
+[courtyards_overlap]: Courtyards overlap
+    Local override; Severity: error
+    @(162.5600 mm, 53.3400 mm): Footprint J9
+    @(165.1000 mm, 53.3400 mm): Footprint J8
+[courtyards_overlap]: Courtyards overlap
+    Local override; Severity: error
+    @(162.5600 mm, 53.3400 mm): Footprint J9
+    @(160.0200 mm, 53.3400 mm): Footprint J4
+[courtyards_overlap]: Courtyards overlap
+    Local override; Severity: error
+    @(165.1000 mm, 53.3400 mm): Footprint J8
+    @(167.6400 mm, 53.3400 mm): Footprint J6
+[courtyards_overlap]: Courtyards overlap
+    Local override; Severity: error
+    @(121.9200 mm, 53.3400 mm): Footprint J5
+    @(119.3800 mm, 53.3400 mm): Footprint J2
+[courtyards_overlap]: Courtyards overlap
+    Local override; Severity: error
+    @(116.8400 mm, 96.5200 mm): Footprint J3
+    @(119.3800 mm, 96.5200 mm): Footprint J1
+
+** Found 15 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 91.4400 mm): Track [Net-(J11-Pad19)] on F.Cu, length 3.4847 mm
+    @(167.6400 mm, 88.9000 mm): Through hole pad 15 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 60.9600 mm): Through hole pad 4 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 58.4200 mm): Through hole pad 3 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 58.4200 mm): Through hole pad 3 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 55.8800 mm): Through hole pad 2 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 66.0400 mm): Through hole pad 6 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 63.5000 mm): Through hole pad 5 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 63.5000 mm): Through hole pad 5 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 60.9600 mm): Through hole pad 4 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 55.8800 mm): Through hole pad 2 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 53.3400 mm): Through hole pad 1 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 78.7400 mm): Through hole pad 11 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 76.2000 mm): Through hole pad 10 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 68.5800 mm): Through hole pad 7 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 66.0400 mm): Through hole pad 6 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 73.6600 mm): Through hole pad 9 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 71.1200 mm): Through hole pad 8 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 88.9000 mm): Through hole pad 15 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 86.3600 mm): Through hole pad 14 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 83.8200 mm): Through hole pad 13 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 81.2800 mm): Through hole pad 12 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 71.1200 mm): Through hole pad 8 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 68.5800 mm): Through hole pad 7 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 76.2000 mm): Through hole pad 10 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 73.6600 mm): Through hole pad 9 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 81.2800 mm): Through hole pad 12 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 78.7400 mm): Through hole pad 11 [Net-(J11-Pad19)] of J6
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(167.6400 mm, 86.3600 mm): Through hole pad 14 [Net-(J11-Pad19)] of J6
+    @(167.6400 mm, 83.8200 mm): Through hole pad 13 [Net-(J11-Pad19)] of J6
+
+** Found 0 Footprint errors **
+
+** End of Report **
