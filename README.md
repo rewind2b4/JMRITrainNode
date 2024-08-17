@@ -3,7 +3,7 @@ TrainNode is a JMRI compatible I/O controller built on the MQTT protocol. Using 
 
 For easy wiring, use a pico servo shield such as this one https://www.waveshare.com/pico-servo-driver.htm
 
-![alt text]([https://github.com/rewind2b4/JMRITrainNode/blob/master/MQTTDecoderExpansionBoard.png?raw=true)
+![alt text](https://github.com/rewind2b4/JMRITrainNode/blob/master/MQTTDecoderExpansionBoard.png?raw=true)
 
 ## Installation
 - TO DO
