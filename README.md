@@ -30,6 +30,7 @@ Device Settings
 - Neopixel_pin (The pin used to shift out bits to any neopixels) (None if not used)
 
 Server Configuration Settings
+- The topics used by JMRI to publish certain events to 
 - turnout_HIGH = "THROWN"
 - turnout_LOW = "CLOSED"
 - light_HIGH = "ON"
