@@ -54,3 +54,5 @@ MQTT_Addresses
 ## Upcoming Features
 - Webserver for changing configuration
 - Service that detects TrainNodes and allows for easy management (similar in functionality to a service such as QNAP finder)
+- The ability to address multiple Neopixel buses
+- Code optimisation
