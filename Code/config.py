@@ -1,16 +1,15 @@
-# Ssid = 'Layout_MQTT'
-# Password = '20200527'
-Ssid = 'Test_Layout_MQTT'
-Password = '20200527'
-Installation_Ssid = 'Test_Layout_MQTT'
-Installation_Password = '20200527'
+Ssid = 'SSID'
+Password = 'Password'
+Installation_Ssid = 'SSID'
+Installation_Password = 'Password'
 Server_addr = '192.168.168.138'
-Client_name = 'Roundhouse_Board'
+Client_name = 'TrainNode'
 MQTT_User = 'MQTT_USER'
-MQTT_Password = '20200527'
+MQTT_Password = 'MQTT_Password'
 MQTT_Port = 1883
 
-MQTT_Prefix = 'pastrains/track/'
+## MQTT Channel (see https://www.jmri.org/help/en/html/hardware/mqtt/index.shtml)
+MQTT_Prefix = 'mychannel/track/'
 
 # The HIGH / LOW values sent to the MQTT server
 turnout_HIGH = "THROWN"
@@ -31,10 +30,10 @@ Debounce_delay = 0.050 # Debounce delay in seconds
 Neopixel_pin = 1 # Neopixel Pin (None if not used)
 
 # MQTT Address, State, Device Type, Device Specific Arguments
-MQTT_Addresses = [["pastrains/track/turnout/10", "CLOSED", "OUTPUT", "Servo", [0, 6000, 8100, 1]], 
-                  ["pastrains/track/light/13", "OFF", "OUTPUT", "Neopixel", [0, [0, 255, 0], [255, 0, 0]]],
-                  ["pastrains/track/turnout/12", "CLOSED", "OUTPUT", "General", []],
-                  ["pastrains/track/sensor/13", "CLOSED", "INPUT", "Button_Latching", [2, 0]]]
+MQTT_Addresses = [["mychannel/track/turnout/10", "CLOSED", "OUTPUT", "Servo", [0, 6000, 8100, 1]], 
+                  ["mychannel/track/light/13", "OFF", "OUTPUT", "Neopixel", [0, [0, 255, 0], [255, 0, 0]]],
+                  ["mychannel/track/turnout/12", "CLOSED", "OUTPUT", "General", []],
+                  ["mychannel/track/sensor/13", "CLOSED", "INPUT", "Button_Latching", [2, 0]]]
 
 # Available Device Types
     # Servo [PWM Pin, Min PWM, Max PWM, Ramp Enable] (OUTPUT)
