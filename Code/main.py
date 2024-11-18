@@ -18,7 +18,7 @@ def connect(Ssid, Password):
     wlan.active(True)
     wlan.connect(Ssid, Password)
     while wlan.isconnected() == False:
-        print('Waiting for connection...')
+        print('Waiting for connection to train board...')
         sleep(1)
     ip = wlan.ifconfig()[0]
     print(f'Connected on {ip}')
