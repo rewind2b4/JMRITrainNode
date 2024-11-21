@@ -57,3 +57,4 @@ MQTT_Addresses
 - The ability to address multiple Neopixel buses
 - Code optimisation
 - Add photos to repo
+- Removal of MIP install service
