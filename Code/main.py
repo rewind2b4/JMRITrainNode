@@ -4,12 +4,7 @@ from machine import Pin, PWM
 import neopixel
 import config
 import user
-try:
-    from umqtt.simple import MQTTClient
-except:
-    import installer
-    installer.main()
-    from umqtt.simple import MQTTClient
+from umqtt.simple import MQTTClient
 
 
 def connect(Ssid, Password):
