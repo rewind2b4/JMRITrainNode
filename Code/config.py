@@ -43,4 +43,5 @@ MQTT_Addresses = [["mychannel/track/turnout/10", "CLOSED", "OUTPUT", "Servo", [0
     # General_OUT [] (OUTPUT)
     # Button_Latching [Button Pin, Pin State High] (INPUT)
     # Pin_Scan [Pin, Pin State High] (INPUT)
+    # NFC_BlockOC [] (INPUT)
     # General_IN [] (INPUT)
