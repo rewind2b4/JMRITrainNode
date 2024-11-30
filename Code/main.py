@@ -6,6 +6,9 @@ import config
 import user
 from umqtt.simple import MQTTClient
 
+from lib.PiicoDev.PiicoDev_RFID import PiicoDev_RFID
+from lib.PiicoDev.PiicoDev_Unified import sleep_ms
+
 
 def connect(Ssid, Password):
     #Connect to WLAN
@@ -13,7 +16,7 @@ def connect(Ssid, Password):
     wlan.active(True)
     wlan.connect(Ssid, Password)
     while wlan.isconnected() == False:
-        print('Waiting for connection to train board...')
+        print('Waiting for connection to board...')
         sleep(1)
     ip = wlan.ifconfig()[0]
     print(f'Connected on {ip}')
@@ -171,6 +174,18 @@ def pin_scan(address, publish_mqtt = True, mqtt = None):
             while Pin(address[4][0], Pin.IN, Pin.PULL_UP).value() == address[4][1]:
                 sleep(0.001)
 
+def nfc_scan(rfid, address, publish_mqtt = True, mqtt = None):
+    if rfid.tagPresent():    # if an RFID tag is present
+        id = rfid.readID()   # get the id
+    
+        if id != address[1]: ## TODO: work out how to do maths for address state
+            address[1] = id
+            if publish_mqtt == True:
+                if mqtt != None:
+                    publish(address, mqtt)
+
+
+
 
 def neopixel_handler(address, state):
 
@@ -203,6 +218,8 @@ if __name__ == "__main__":
         neopixel_struct = neopixel.NeoPixel(Pin(config.Neopixel_pin), neopixel_count)
         for i in range(neopixel_count):
             neopixel_struct[i] = (0, 0, 0) ## Turn off all neopixels
+    
+    rfid = PiicoDev_RFID()   # Initialise the RFID module
 
     while True:
         try:
@@ -233,11 +250,13 @@ if __name__ == "__main__":
                 for address in mqtt_publish: ## Scan the input pins and publish their state if it has changed
                     if address[2] == "INPUT":
                         if address[3] == "Button_Latching":
-                            latching_button(address, mqtt=mqtt)
+                            latching_button(address, mqtt)
                         elif address[3] == "Pin_Scan":
-                            pin_scan(address, mqtt=mqtt)
+                            pin_scan(address, mqtt)
                         elif address[3] == "General_IN":
                             publish(address, mqtt)
+                        elif address[3] == "NFC_BlockOC":
+                            nfc_scan(rfid, address, mqtt)
             except Exception as e:
                 print("Error: MQTT Error", e)
                 break    
