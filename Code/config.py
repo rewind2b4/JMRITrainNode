@@ -1,7 +1,5 @@
 Ssid = 'SSID'
 Password = 'Password'
-Installation_Ssid = 'SSID'
-Installation_Password = 'Password'
 Server_addr = '192.168.168.138'
 Client_name = 'TrainNode'
 MQTT_User = 'MQTT_USER'
