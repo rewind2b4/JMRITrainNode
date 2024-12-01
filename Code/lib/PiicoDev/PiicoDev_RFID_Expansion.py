@@ -8,7 +8,7 @@
 # 2021-12-01:
 # https://github.com/mxgxw/MFRC522-python
 
-from PiicoDev_Unified import *
+from lib.PiicoDev.PiicoDev_Unified import *
 import struct
 from time import time as now
 

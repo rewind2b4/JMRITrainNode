@@ -174,18 +174,18 @@ def pin_scan(address, publish_mqtt = True, mqtt = None):
             while Pin(address[4][0], Pin.IN, Pin.PULL_UP).value() == address[4][1]:
                 sleep(0.001)
 
-def nfc_scan(rfid, address, publish_mqtt = True, mqtt = None):
+
+def nfc_scan(address, publish_mqtt = True, mqtt = None):
+    rfid = PiicoDev_RFID()   # Initialise the RFID module
     if rfid.tagPresent():    # if an RFID tag is present
-        id = rfid.readID()   # get the id
-    
+        id = rfid.readID()   # get the id 
         if id != address[1]: ## TODO: work out how to do maths for address state
-            address[1] = id
-            if publish_mqtt == True:
-                if mqtt != None:
-                    publish(address, mqtt)
-
-
-
+            if id != '':
+                address[1] = id
+                if publish_mqtt == True:
+                    if mqtt != None:
+                        publish(address, mqtt)
+                    
 
 def neopixel_handler(address, state):
 
@@ -219,7 +219,6 @@ if __name__ == "__main__":
         for i in range(neopixel_count):
             neopixel_struct[i] = (0, 0, 0) ## Turn off all neopixels
     
-    rfid = PiicoDev_RFID()   # Initialise the RFID module
 
     while True:
         try:
@@ -250,13 +249,13 @@ if __name__ == "__main__":
                 for address in mqtt_publish: ## Scan the input pins and publish their state if it has changed
                     if address[2] == "INPUT":
                         if address[3] == "Button_Latching":
-                            latching_button(address, mqtt)
+                            latching_button(address, True, mqtt)
                         elif address[3] == "Pin_Scan":
-                            pin_scan(address, mqtt)
+                            pin_scan(address, True, mqtt)
                         elif address[3] == "General_IN":
                             publish(address, mqtt)
                         elif address[3] == "NFC_BlockOC":
-                            nfc_scan(rfid, address, mqtt)
+                            nfc_scan(address, True, mqtt)
             except Exception as e:
                 print("Error: MQTT Error", e)
                 break    
