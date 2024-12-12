@@ -1,13 +1,13 @@
-Ssid = 'SSID'
-Password = 'Password'
-Server_addr = '192.168.168.138'
+Ssid = 'House'
+Password = 'ag1l3mini'
+Server_addr = '192.168.168.38'
 Client_name = 'TrainNode'
-MQTT_User = 'MQTT_USER'
-MQTT_Password = 'MQTT_Password'
+MQTT_User = 'mqtt-user'
+MQTT_Password = '9te%BM3u$ps77dMoR$B7@DJyBZ'
 MQTT_Port = 1883
 
 ## MQTT Channel (see https://www.jmri.org/help/en/html/hardware/mqtt/index.shtml)
-MQTT_Prefix = 'mychannel/track/'
+MQTT_Prefix = 'pastrains/track/'
 
 # The HIGH / LOW values sent to the MQTT server
 turnout_HIGH = "THROWN"
@@ -28,10 +28,7 @@ Debounce_delay = 0.050 # Debounce delay in seconds
 Neopixel_pin = 1 # Neopixel Pin (None if not used)
 
 # MQTT Address, State, Device Type, Device Specific Arguments
-MQTT_Addresses = [["mychannel/track/turnout/10", "CLOSED", "OUTPUT", "Servo", [0, 6000, 8100, 1]], 
-                  ["mychannel/track/light/13", "OFF", "OUTPUT", "Neopixel", [0, [0, 255, 0], [255, 0, 0]]],
-                  ["mychannel/track/turnout/12", "CLOSED", "OUTPUT", "General", []],
-                  ["mychannel/track/sensor/13", "CLOSED", "INPUT", "Button_Latching", [2, 0]]]
+MQTT_Addresses = [["pastrains/track/reporter/10", "CLOSED", "INPUT", "NFC_BlockOC", []]]
 
 # Available Device Types
     # Servo [PWM Pin, Min PWM, Max PWM, Ramp Enable] (OUTPUT)

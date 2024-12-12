@@ -1,0 +1,24 @@
+{
+    "Ssid": "House",
+    "Password": "ag1l3mini",
+    "Server_addr": "192.168.168.38",
+    "Client_name": "TrainNode",
+    "MQTT_User": "mqtt-user",
+    "MQTT_Password": "9te%BM3u$ps77dMoR$B7@DJyBZ",
+    "MQTT_Port": 1883,
+    "MQTT_Prefix": "pastrains/track/",
+    "turnout_HIGH": "THROWN",
+    "turnout_LOW": "CLOSED",
+    "light_HIGH": "ON",
+    "light_LOW": "OFF",
+    "sensor_HIGH": "ACTIVE",
+    "sensor_LOW": "INACTIVE",
+    "Ramp_Rate": 0.001,
+    "PWM_Freq": 50,
+    "Debounce_delay": 0.05,
+    "Neopixel_pin": 1,
+
+    "MQTT_Addresses": {
+        "1": "pastrains/track/1"
+    }
+}
