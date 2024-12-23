@@ -4,6 +4,7 @@ from time import sleep, ticks_us
 from machine import Pin, PWM
 import neopixel
 from umqtt.simple import MQTTClient
+import re
 
 from lib.PiicoDev.PiicoDev_RFID import PiicoDev_RFID
 from lib.PiicoDev.PiicoDev_Unified import sleep_ms
@@ -34,10 +35,19 @@ config.load_config('config.json')
 
 
 def sub_cb(topic, msg):
+
     if topic.decode() == config.settings["client_name"] + "/client_name":
         print("Changing client name to", msg.decode())
         config.settings["client_name"] = msg.decode()
         config.save_config()
+        return 
+     
+    elif config.settings["client_name"] in topic.decode():
+        decoded_topic = re.sub(config.settings["client_name"] + "/", "", topic.decode())
+        device_num = decoded_topic.split("/")[0]
+        setting = decoded_topic.split("/")[1]
+        print("device_num", device_num, "setting", setting, "to", msg.decode())
+        ## TODO: set the setting to the value in msg.decode()
         return
 
     device = None
@@ -134,8 +144,16 @@ if __name__ == "__main__":
                     print("Subscribed to", mqtt_address)
 
         for device in config.devices:
+            device_num = str(device)
             mqtt.subscribe(config.devices[device]["address"])
             print("Subscribed to", config.devices[device]["address"])
+
+            for setting in config.devices[device]:
+                mqtt_address = str(config.settings["client_name"]) + "/" + device_num + "/" + str(setting)
+                mqtt.publish(mqtt_address, str(config.devices[device][setting]), qos=1)
+                print("Published", mqtt_address, str(config.devices[device][setting]))
+                mqtt.subscribe(mqtt_address)
+                print("Subscribed to", str(setting))
 
         counter = 0
         while wlan.isconnected():

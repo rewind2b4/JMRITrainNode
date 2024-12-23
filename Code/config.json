@@ -14,9 +14,47 @@
 
     "devices": {
             "1": {
+                "address": "pastrains/track/turnout/0",
+                "current_state": {
+                    "state": "CLOSED",
+                    "position": 2000
+                },
+                "states": {
+                    "THROWN": 2000,
+                    "CLOSED": 4000
+                },
+                "io": "OUTPUT",
+                "type": "servo",
+                "args": {
+                    "freq": 50,
+                    "pin": 0,
+                    "ramp": true,
+                    "step": 200
+                }
+            },
+            "2": {
                 "address": "pastrains/track/turnout/1",
                 "current_state": {
-                    "state": "THROWN",
+                    "state": "CLOSED",
+                    "position": 2000
+                },
+                "states": {
+                    "THROWN": 2000,
+                    "CLOSED": 4000
+                },
+                "io": "OUTPUT",
+                "type": "servo",
+                "args": {
+                    "freq": 50,
+                    "pin": 1,
+                    "ramp": true,
+                    "step": 200
+                }
+            },
+            "3": {
+                "address": "pastrains/track/turnout/2",
+                "current_state": {
+                    "state": "CLOSED",
                     "position": 2000
                 },
                 "states": {
@@ -31,6 +69,7 @@
                     "ramp": true,
                     "step": 200
                 }
-            }   
+            } 
+
     }
 }
