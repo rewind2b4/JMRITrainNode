@@ -5,6 +5,7 @@ from machine import Pin, PWM
 import neopixel
 from umqtt.simple import MQTTClient
 import re
+import user
 
 from lib.PiicoDev.PiicoDev_RFID import PiicoDev_RFID
 from lib.PiicoDev.PiicoDev_Unified import sleep_ms
@@ -26,9 +27,9 @@ class config_manager:
     def save_config(self):
         with open(self.filename, 'w') as json_file:
             json_file.write(json.dumps(self.config))
-        return  
+        return 
 
-    
+
 global config
 config = config_manager()
 config.load_config('config.json')
@@ -41,7 +42,7 @@ def sub_cb(topic, msg):
         config.settings["client_name"] = msg.decode()
         config.save_config()
         return 
-     
+    
     elif config.settings["client_name"] in topic.decode():
         decoded_topic = re.sub(config.settings["client_name"] + "/", "", topic.decode())
         device_num = decoded_topic.split("/")[0]
@@ -95,10 +96,57 @@ def connect():
     except Exception as e:
         print(f"Error: Connection Lost: {e}")
         return None, None
+    
+
+def servo(device):
+    servo = PWM(Pin(config.devices[device]["args"]["pin"]))
+    servo.freq(config.devices[device]["args"]["freq"])
+    if config.devices[device]["args"]["ramp"]:
+        step = config.devices[device]["args"]["step"]
+
+        if config.devices[device]["current_state"]["position"] > config.devices[device]["states"][config.devices[device]["current_state"]["state"]]:
+            config.devices[device]["current_state"]["position"] -= step
+        else:
+            config.devices[device]["current_state"]["position"] += step
+    else:
+        config.devices[device]["current_state"]["position"] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
+    servo.duty_u16(config.devices[device]["current_state"]["position"])
+    config.save_config()
+
+
+def pin_output(device):
+    pin = Pin(config.devices[device]["args"]["pin"], Pin.OUT)
+    pin.value(config.devices[device]["states"][config.devices[device]["current_state"]["state"]])
+    config.devices[device]["current_state"]["position"] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
+    config.save_config()
+
+
+def pin_input(device):
+    pass
+
+
+def neopixel_process(device):
+    pass
+
+
+def rfid_process(device):
+    pass
+
+
+def button_process(device):
+    pass
 
 
 def process_inputs():
-    pass
+    for device in config.devices:
+        if config.devices[device]["io"] == "INPUT":
+            if config.devices[device]["type"] == "rfid":
+                rfid_process(device)
+            elif config.devices[device]["type"] == "button":
+                button_process(device)
+            elif config.devices[device]["type"] == "pin_input":
+                pin_input(device)
+
 
 def process_outputs():
     for device in config.devices:
@@ -109,21 +157,12 @@ def process_outputs():
                 
                 ## select the device type 
 
-                ## SERVO
                 if config.devices[device]["type"] == "servo":
-                    servo = PWM(Pin(config.devices[device]["args"]["pin"]))
-                    servo.freq(config.devices[device]["args"]["freq"])
-                    if config.devices[device]["args"]["ramp"]:
-                        step = config.devices[device]["args"]["step"]
-
-                        if position > config.devices[device]["states"][config.devices[device]["current_state"]["state"]]:
-                            config.devices[device]["current_state"]["position"] -= step
-                        else:
-                            config.devices[device]["current_state"]["position"] += step
-                    else:
-                        config.devices[device]["current_state"]["position"] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
-                    servo.duty_u16(config.devices[device]["current_state"]["position"])
-                    config.save_config()
+                    servo(device)
+                elif config.devices[device]["type"] == "pin":
+                    pin(device)
+                elif config.devices[device]["type"] == "neopixel":
+                    neopixel_process(device)
 
 
 if __name__ == "__main__":
@@ -160,11 +199,12 @@ if __name__ == "__main__":
             try:
                 start_time = ticks_us()
                 mqtt.check_msg()
+                user.custom_node_functions(config.devices)
                 process_inputs()
                 process_outputs()
                 finish_time = ticks_us()
-                config.settings["cycle_time"] = finish_time - start_time
                 if counter == 10000:
+                    config.settings["cycle_time"] = finish_time - start_time
                     mqtt_address = str(config.settings["client_name"]) + "/" + "cycle_time"
                     mqtt.publish(mqtt_address, str(config.settings["cycle_time"]), qos=1)
                     counter = 0
