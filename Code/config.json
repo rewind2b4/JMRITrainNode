@@ -2,30 +2,35 @@
     "settings": {
         "ssid": "House",
         "password": "ag1l3mini",
-        "server_addr": "192.168.168.38",
+        "server_addr": "192.168.168.240",
         "client_name": "TrainNode",
         "MQTT_user": "mqtt-user",
         "MQTT_password": "9te%BM3u$ps77dMoR$B7@DJyBZ",
         "MQTT_port": 1883,
         "ip": "192.168.168.238",
-        "debug": true
+        "debug": true,
+        "cycle_time": 1000
     },
 
     "devices": {
             "1": {
                 "address": "pastrains/track/turnout/1",
-                "current_state": "CLOSED",
-                "allowed_states": ["CLOSED", "THROWN"],
-                "IO": "OUTPUT",
+                "current_state": {
+                    "state": "THROWN",
+                    "position": 2000
+                },
+                "states": {
+                    "THROWN": 2000,
+                    "CLOSED": 4000
+                },
+                "io": "OUTPUT",
                 "type": "servo",
                 "args": {
-                    "PWM_freq": 50,
-                    "PWM_pin": 2,
-                    "closed_PWM": 0.5,
-                    "thrown_PWM": 2,
-                    "ramp_enable": true,
-                    "ramp_rate": 0.001
-            }
-        }
+                    "freq": 50,
+                    "pin": 2,
+                    "ramp": true,
+                    "step": 200
+                }
+            }   
     }
 }
