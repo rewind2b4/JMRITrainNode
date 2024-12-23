@@ -1,9 +1,14 @@
 import json
 import network
 from time import sleep, ticks_us
-from machine import Pin, PWM
-import neopixel
-from umqtt.simple import MQTTClient
+try:
+    from umqtt.simple import MQTTClient
+    import neopixel
+    from machine import Pin, PWM
+    PC_run = False
+except:
+    print("Running on PC")
+    PC_run = True
 import re
 import user
 
@@ -36,7 +41,6 @@ config.load_config('config.json')
 
 
 def sub_cb(topic, msg):
-
     if topic.decode() == config.settings["client_name"] + "/client_name":
         print("Changing client name to", msg.decode())
         config.settings["client_name"] = msg.decode()
@@ -69,6 +73,28 @@ def sub_cb(topic, msg):
                 return
         print(f"{msg.decode()}: invalid state, no change:", device["type"], device["address"], device["current_state"]["state"], device["states"][device["current_state"]["state"]])
         return
+    
+
+def check_mqtt_msg(mqtt):
+    if PC_run == False:
+        mqtt.check_msg()
+    else:
+        pass
+
+
+def publish_mqtt(mqtt, address, msg):
+    if PC_run == False:
+        mqtt.publish(address, msg, qos=1)
+    else:
+        print("Published", address, msg)
+
+
+
+def sub_mqtt(mqtt, address):
+    if PC_run == False:
+        mqtt.subscribe(address)
+    else:
+        print("Subscribed to", address)
 
 
 def connect():
@@ -122,20 +148,67 @@ def pin_output(device):
 
 
 def pin_input(device):
-    pass
+    if config.devices[device]["args"]["pullup"]:
+        pin = Pin(config.devices[device]["args"]["pin"], Pin.IN, Pin.PULL_UP)
+    else:
+        pin = Pin(config.devices[device]["args"]["pin"], Pin.IN)
+    state = pin.value()
+    for config_state in config.devices[device]["states"]:
+        if config.devices[device]["states"][config_state] == state:
+            state_to_set = str(config_state)
+            break
+    if state_to_set != config.devices[device]["current_state"]["state"]:
+        sleep(config.devices[device]["args"]["debounce"])
+        pin_check = pin.value()
+        if pin_check == state:
+            config.devices[device]["current_state"]["state"] = state_to_set
+            publish_mqtt(mqtt, config.devices[device]["address"], state_to_set)
+            print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+            config.save_config()
+        ## TODO: Test this function
 
 
 def neopixel_process(device):
-    pass
+    ##neo = neopixel.NeoPixel(Pin(config.devices[device]["args"]["pin"]), config.devices[device]["args"]["pixel_count"])
+    ##neo[config.devices[device]["args"]["pixel"]] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
+    ##neo.write()
+    pass ## TODO: Need to implement neopixel_process properly
 
 
 def rfid_process(device):
-    pass
+    rfid = PiicoDev_RFID() ## TODO: add address to rfid
+    if rfid.tagPresent():
+        id = rfid.readID()
+        if id != config.devices[device]["current_state"]["state"]:
+            if id != '':
+                config.devices[device]["current_state"]["state"] = id
+                config.save_config()
+                print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+                publish_mqtt(mqtt, config.devices[device]["address"], config.devices[device]["current_state"]["state"])
 
 
-def button_process(device):
-    pass
-
+def latch_button(device):
+    if config.devices[device]["args"]["pullup"]:
+        pin = Pin(config.devices[device]["args"]["pin"], Pin.IN, Pin.PULL_UP)
+    else:
+        pin = Pin(config.devices[device]["args"]["pin"], Pin.IN)
+    state = pin.value()
+    if state == config.devices[device]["args"]["prev_state"]:
+        return
+    for config_state in config.devices[device]["states"]:
+        if config.devices[device]["states"][config_state] == state:
+            state_to_set = str(config_state)
+            break
+    if state_to_set != config.devices[device]["current_state"]["state"]:
+        sleep(config.devices[device]["args"]["debounce"])
+        pin_check = pin.value()
+        if pin_check == state:
+            config.devices[device]["current_state"]["state"] = state_to_set
+            publish_mqtt(mqtt, config.devices[device]["address"], state_to_set)
+            print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+            config.save_config()
+        ## TODO: Test this function
+    
 
 def process_inputs():
     for device in config.devices:
@@ -143,7 +216,7 @@ def process_inputs():
             if config.devices[device]["type"] == "rfid":
                 rfid_process(device)
             elif config.devices[device]["type"] == "button":
-                button_process(device)
+                latch_button(device)
             elif config.devices[device]["type"] == "pin_input":
                 pin_input(device)
 
@@ -160,7 +233,7 @@ def process_outputs():
                 if config.devices[device]["type"] == "servo":
                     servo(device)
                 elif config.devices[device]["type"] == "pin":
-                    pin(device)
+                    pin_output(device)
                 elif config.devices[device]["type"] == "neopixel":
                     neopixel_process(device)
 
@@ -176,37 +249,41 @@ if __name__ == "__main__":
         for setting in config.settings:
             if setting == "client_name" or setting == "ip" or setting == "cycle_time":
                 mqtt_address = str(config.settings["client_name"]) + "/" + str(setting)
-                mqtt.publish(mqtt_address, str(config.settings[setting]), qos=1)
+                publish_mqtt(mqtt, mqtt_address, str(config.settings[setting]))
                 print("Published", mqtt_address, config.settings[setting])
                 if setting == "client_name":
-                    mqtt.subscribe(mqtt_address)
+                    sub_mqtt(mqtt, mqtt_address)
                     print("Subscribed to", mqtt_address)
 
         for device in config.devices:
             device_num = str(device)
-            mqtt.subscribe(config.devices[device]["address"])
+            sub_mqtt(mqtt, config.devices[device]["address"])
             print("Subscribed to", config.devices[device]["address"])
 
             for setting in config.devices[device]:
                 mqtt_address = str(config.settings["client_name"]) + "/" + device_num + "/" + str(setting)
-                mqtt.publish(mqtt_address, str(config.devices[device][setting]), qos=1)
+                publish_mqtt(mqtt, mqtt_address, str(config.devices[device][setting]))
                 print("Published", mqtt_address, str(config.devices[device][setting]))
-                mqtt.subscribe(mqtt_address)
+                sub_mqtt(mqtt, mqtt_address)
                 print("Subscribed to", str(setting))
 
         counter = 0
         while wlan.isconnected():
             try:
                 start_time = ticks_us()
-                mqtt.check_msg()
+                check_mqtt_msg(mqtt)
                 user.custom_node_functions(config.devices)
-                process_inputs()
-                process_outputs()
+                if PC_run == False:
+                    process_inputs()
+                    process_outputs()
+                else:
+                    for device in config.devices:
+                        print(str(device), config.devices[device]["current_state"]["state"])    
                 finish_time = ticks_us()
                 if counter == 10000:
                     config.settings["cycle_time"] = finish_time - start_time
                     mqtt_address = str(config.settings["client_name"]) + "/" + "cycle_time"
-                    mqtt.publish(mqtt_address, str(config.settings["cycle_time"]), qos=1)
+                    publish_mqtt(mqtt, mqtt_address, str(config.settings["cycle_time"]))
                     counter = 0
                 counter += 1 
 
