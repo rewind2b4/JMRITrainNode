@@ -1,19 +1,14 @@
 import json
-import network
 from time import sleep, ticks_us
-try:
-    from umqtt.simple import MQTTClient
-    import neopixel
-    from machine import Pin, PWM
-    PC_run = False
-except:
-    print("Running on PC")
-    PC_run = True
-import re
-import user
-
+from umqtt.simple import MQTTClient
+import neopixel
+import network
+from machine import Pin, PWM
 from lib.PiicoDev.PiicoDev_RFID import PiicoDev_RFID
 from lib.PiicoDev.PiicoDev_Unified import sleep_ms
+PC_run = False
+import re
+import user
 
 
 class config_manager:
@@ -52,7 +47,13 @@ def sub_cb(topic, msg):
         device_num = decoded_topic.split("/")[0]
         setting = decoded_topic.split("/")[1]
         print("device_num", device_num, "setting", setting, "to", msg.decode())
-        ## TODO: set the setting to the value in msg.decode()
+
+        try:
+            json_object = json.loads(msg.decode())
+            config.devices[device_num][setting] = json_object
+        except:
+            config.devices[device_num][setting] = msg.decode()
+        config.save_config()
         return
 
     device = None
@@ -76,25 +77,14 @@ def sub_cb(topic, msg):
     
 
 def check_mqtt_msg(mqtt):
-    if PC_run == False:
-        mqtt.check_msg()
-    else:
-        pass
+    mqtt.check_msg()
 
 
 def publish_mqtt(mqtt, address, msg):
-    if PC_run == False:
-        mqtt.publish(address, msg, qos=1)
-    else:
-        print("Published", address, msg)
-
-
+    mqtt.publish(address, msg, qos=1)
 
 def sub_mqtt(mqtt, address):
-    if PC_run == False:
-        mqtt.subscribe(address)
-    else:
-        print("Subscribed to", address)
+    mqtt.subscribe(address)
 
 
 def connect():
@@ -108,9 +98,10 @@ def connect():
         ip = wlan.ifconfig()[0]
         print(f'Connected on {ip}')
         config.settings["ip"] = ip    
-        mqtt = MQTTClient(client_id = config.settings["client_name"], server = config.settings["server_addr"], port = config.settings["MQTT_port"], user = config.settings["MQTT_user"], password = config.settings["MQTT_password"])
+        config.save_config()
         try:
             print("Connecting to MQTT Server")
+            mqtt = MQTTClient(client_id = config.settings["client_name"], server = config.settings["server_addr"], port = config.settings["MQTT_port"], user = config.settings["MQTT_user"], password = config.settings["MQTT_password"])
             mqtt.connect()
             mqtt.set_callback(sub_cb)
         except Exception as e:
@@ -213,6 +204,7 @@ def latch_button(device):
 def process_inputs():
     for device in config.devices:
         if config.devices[device]["io"] == "INPUT":
+
             if config.devices[device]["type"] == "rfid":
                 rfid_process(device)
             elif config.devices[device]["type"] == "button":
@@ -227,8 +219,6 @@ def process_outputs():
             position = config.devices[device]["current_state"]["position"]
             if position != config.devices[device]["states"][config.devices[device]["current_state"]["state"]]:
                 print(config.devices[device]["address"], config.devices[device]["current_state"]["state"], "position", config.devices[device]["current_state"]["position"], "to", config.devices[device]["states"][config.devices[device]["current_state"]["state"]])
-                
-                ## select the device type 
 
                 if config.devices[device]["type"] == "servo":
                     servo(device)
@@ -266,19 +256,15 @@ if __name__ == "__main__":
                 print("Published", mqtt_address, str(config.devices[device][setting]))
                 sub_mqtt(mqtt, mqtt_address)
                 print("Subscribed to", str(setting))
-
         counter = 0
+
         while wlan.isconnected():
             try:
                 start_time = ticks_us()
                 check_mqtt_msg(mqtt)
                 user.custom_node_functions(config.devices)
-                if PC_run == False:
-                    process_inputs()
-                    process_outputs()
-                else:
-                    for device in config.devices:
-                        print(str(device), config.devices[device]["current_state"]["state"])    
+                process_inputs()
+                process_outputs()
                 finish_time = ticks_us()
                 if counter == 10000:
                     config.settings["cycle_time"] = finish_time - start_time
@@ -286,7 +272,6 @@ if __name__ == "__main__":
                     publish_mqtt(mqtt, mqtt_address, str(config.settings["cycle_time"]))
                     counter = 0
                 counter += 1 
-
             except Exception as e:
                 print(f"Error: Connection Lost: {e}")
                 break
