@@ -6,7 +6,6 @@ import network
 from machine import Pin, PWM
 from lib.PiicoDev.PiicoDev_RFID import PiicoDev_RFID
 from lib.PiicoDev.PiicoDev_Unified import sleep_ms
-PC_run = False
 import re
 import user
 
