@@ -83,9 +83,39 @@
                 "io": "INPUT",
                 "type": "pin_input",
                 "args": {
-                    "pin": 5,
+                    "pin": 3,
                     "pullup": true,
                     "debounce": 50
+                }
+            },
+            "5": {
+                "address": "pastrains/track/turnout/3",
+                "current_state": {
+                    "state": "CLOSED",
+                    "position": 0
+                },
+                "states": {
+                    "CLOSED": 0,
+                    "THROWN": 1
+                },
+                "io": "OUTPUT",
+                "type": "pin_output",
+                "args": {
+                    "pin": 4
+                }
+            },
+            "6": {
+                "address": "pastrains/track/rfid/0",
+                "current_state": {
+                    "state": "NULL"      
+                },
+                "io": "UNUSED",
+                "type": "rfid",
+                "args": {
+                    "bus": 1,
+                    "sda": 21,
+                    "scl": 22,
+                    "asw_address": [0,0]
                 }
             }
     }

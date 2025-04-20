@@ -140,7 +140,6 @@ def pin_output(device):
     pin.value(config.devices[device]["states"][config.devices[device]["current_state"]["state"]])
     config.devices[device]["current_state"]["position"] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
     config.save_config()
-    # TODO: Test this function
 
 
 def pin_input(device):
@@ -172,18 +171,22 @@ def neopixel_process(device):
     
 
 def rfid_process(device):
-    rfid = PiicoDev_RFID() ## TODO: add address to rfid
+    rfid = PiicoDev_RFID(sda=Pin(config.devices[device]["args"]["sda"]), 
+                         scl=Pin(config.devices[device]["args"]["scl"]), 
+                         asw=config.devices[device]["args"]["asw_address"],
+                         bus=config.devices[device]["args"]["bus"])
     if rfid.tagPresent():
         id = rfid.readID()
+        print(id)
         if id != config.devices[device]["current_state"]["state"]:
             if id != '':
                 config.devices[device]["current_state"]["state"] = id
                 config.save_config()
                 print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
                 publish_mqtt(mqtt, config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+## Need to fix addressing system TODO
 
-
-def latch_button(device):
+def button(device):
     if config.devices[device]["args"]["pullup"]:
         pin = Pin(config.devices[device]["args"]["pin"], Pin.IN, Pin.PULL_UP)
     else:
@@ -214,11 +217,10 @@ def latch_button(device):
 def process_inputs():
     for device in config.devices:
         if config.devices[device]["io"] == "INPUT":
-
             if config.devices[device]["type"] == "rfid":
                 rfid_process(device)
             elif config.devices[device]["type"] == "button":
-                latch_button(device)
+                button(device)
             elif config.devices[device]["type"] == "pin_input":
                 pin_input(device)
 
@@ -232,7 +234,7 @@ def process_outputs():
 
                 if config.devices[device]["type"] == "servo":
                     servo(device)
-                elif config.devices[device]["type"] == "pin":
+                elif config.devices[device]["type"] == "pin_output":
                     pin_output(device)
                 elif config.devices[device]["type"] == "neopixel":
                     neopixel_process(device)
