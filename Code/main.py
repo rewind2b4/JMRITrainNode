@@ -1,6 +1,11 @@
 import json
 from time import sleep, ticks_us
-from umqtt.simple import MQTTClient
+try:
+    from umqtt.simple import MQTTClient
+except:
+    import mip
+    mip.install("umqtt.simple")
+    from umqtt.simple import MQTTClient
 import neopixel
 import network
 from machine import Pin, PWM
@@ -135,6 +140,7 @@ def pin_output(device):
     pin.value(config.devices[device]["states"][config.devices[device]["current_state"]["state"]])
     config.devices[device]["current_state"]["position"] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
     config.save_config()
+    # TODO: Test this function
 
 
 def pin_input(device):
@@ -146,16 +152,16 @@ def pin_input(device):
     for config_state in config.devices[device]["states"]:
         if config.devices[device]["states"][config_state] == state:
             state_to_set = str(config_state)
+            
             break
     if state_to_set != config.devices[device]["current_state"]["state"]:
-        sleep(config.devices[device]["args"]["debounce"])
+        sleep_ms(config.devices[device]["args"]["debounce"])
         pin_check = pin.value()
         if pin_check == state:
             config.devices[device]["current_state"]["state"] = state_to_set
             publish_mqtt(mqtt, config.devices[device]["address"], state_to_set)
             print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
             config.save_config()
-        ## TODO: Test this function
 
 
 def neopixel_process(device):
@@ -163,7 +169,7 @@ def neopixel_process(device):
     ##neo[config.devices[device]["args"]["pixel"]] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
     ##neo.write()
     pass ## TODO: Need to implement neopixel_process properly
-
+    
 
 def rfid_process(device):
     rfid = PiicoDev_RFID() ## TODO: add address to rfid
@@ -183,22 +189,27 @@ def latch_button(device):
     else:
         pin = Pin(config.devices[device]["args"]["pin"], Pin.IN)
     state = pin.value()
-    if state == config.devices[device]["args"]["prev_state"]:
-        return
-    for config_state in config.devices[device]["states"]:
-        if config.devices[device]["states"][config_state] == state:
-            state_to_set = str(config_state)
-            break
-    if state_to_set != config.devices[device]["current_state"]["state"]:
-        sleep(config.devices[device]["args"]["debounce"])
+    if config.devices[device]["args"]["button_trig"] == state and state != config.devices[device]["current_state"]["position"]:
+        sleep_ms(config.devices[device]["args"]["debounce"])
         pin_check = pin.value()
-        if pin_check == state:
-            config.devices[device]["current_state"]["state"] = state_to_set
-            publish_mqtt(mqtt, config.devices[device]["address"], state_to_set)
-            print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
-            config.save_config()
-        ## TODO: Test this function
-    
+        if pin_check == config.devices[device]["args"]["button_trig"]:
+            #config.devices[device]["current_state"]["position"] = state
+            current_state = config.devices[device]["current_state"]["state"]
+            if len(config.devices[device]["states"]) == 2:
+                for button_state in config.devices[device]["states"]:
+                    if current_state != button_state:
+                        state_to_set = button_state
+
+                        config.devices[device]["current_state"]["state"] = state_to_set
+                        publish_mqtt(mqtt, config.devices[device]["address"], state_to_set)
+                        print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+                        config.save_config()
+                        while pin.value() == config.devices[device]["args"]["button_trig"]:
+                            pass
+                        return
+            else:
+                print(f"Error: too many states in device {device} for button object")
+ 
 
 def process_inputs():
     for device in config.devices:
@@ -235,26 +246,26 @@ if __name__ == "__main__":
             print("Connection Failed, retrying...")
             continue
 
-        for setting in config.settings:
-            if setting == "client_name" or setting == "ip" or setting == "cycle_time":
-                mqtt_address = str(config.settings["client_name"]) + "/" + str(setting)
-                publish_mqtt(mqtt, mqtt_address, str(config.settings[setting]))
-                print("Published", mqtt_address, config.settings[setting])
-                if setting == "client_name":
-                    sub_mqtt(mqtt, mqtt_address)
-                    print("Subscribed to", mqtt_address)
+        ##for setting in config.settings:
+        ##    if setting == "client_name" or setting == "ip" or setting == "cycle_time":
+        ##        mqtt_address = str(config.settings["client_name"]) + "/" + str(setting)
+        ##        publish_mqtt(mqtt, mqtt_address, str(config.settings[setting]))
+        ##        print("Published", mqtt_address, config.settings[setting])
+        ##        if setting == "client_name":
+        ##            sub_mqtt(mqtt, mqtt_address)
+        ##            print("Subscribed to", mqtt_address)
 
         for device in config.devices:
             device_num = str(device)
             sub_mqtt(mqtt, config.devices[device]["address"])
             print("Subscribed to", config.devices[device]["address"])
 
-            for setting in config.devices[device]:
-                mqtt_address = str(config.settings["client_name"]) + "/" + device_num + "/" + str(setting)
-                publish_mqtt(mqtt, mqtt_address, str(config.devices[device][setting]))
-                print("Published", mqtt_address, str(config.devices[device][setting]))
-                sub_mqtt(mqtt, mqtt_address)
-                print("Subscribed to", str(setting))
+            ##for setting in config.devices[device]:
+            ##    mqtt_address = str(config.settings["client_name"]) + "/" + device_num + "/" + str(setting)
+            ##    publish_mqtt(mqtt, mqtt_address, str(config.devices[device][setting]))
+            ##    print("Published", mqtt_address, str(config.devices[device][setting]))
+            ##    sub_mqtt(mqtt, mqtt_address)
+            ##    print("Subscribed to", str(setting))
         counter = 0
 
         while wlan.isconnected():

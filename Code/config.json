@@ -14,22 +14,22 @@
 
     "devices": {
             "1": {
-                "address": "pastrains/track/turnout/0",
+                "address": "pastrains/track/sensor/0",
                 "current_state": {
-                    "state": "CLOSED",
-                    "position": 2000
+                    "state": "INACTIVE",
+                    "position": 1
                 },
                 "states": {
-                    "THROWN": 2000,
-                    "CLOSED": 4000
+                    "ACTIVE": 0,
+                    "INACTIVE": 1
                 },
-                "io": "OUTPUT",
-                "type": "servo",
+                "io": "INPUT",
+                "type": "button",
                 "args": {
-                    "freq": 50,
                     "pin": 0,
-                    "ramp": true,
-                    "step": 200
+                    "pullup": true,
+                    "debounce": 50,
+                    "button_trig": 0
                 }
             },
             "2": {
@@ -69,8 +69,24 @@
                     "ramp": true,
                     "step": 200
                 }
+            },
+            "4": {
+                "address": "pastrains/track/sensor/1",
+                "current_state": {
+                    "state": "INACTIVE",
+                    "position": 0
+                },
+                "states": {
+                    "ACTIVE": 0,
+                    "INACTIVE": 1
+                },
+                "io": "INPUT",
+                "type": "pin_input",
+                "args": {
+                    "pin": 5,
+                    "pullup": true,
+                    "debounce": 50
+                }
             }
-             
-
     }
 }
