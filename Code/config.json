@@ -9,7 +9,9 @@
         "MQTT_port": 1883,
         "ip": "192.168.168.238",
         "debug": true,
-        "cycle_time": 1000
+        "cycle_time": 1000,
+        "neopixel_pin": 15,
+        "neopixel_count": 1
     },
 
     "devices": {
@@ -109,13 +111,29 @@
                 "current_state": {
                     "state": "NULL"      
                 },
-                "io": "UNUSED",
+                "io": "INPUT",
                 "type": "rfid",
                 "args": {
-                    "bus": 1,
-                    "sda": 21,
-                    "scl": 22,
+                    "bus": 0,
+                    "sda": 16,
+                    "scl": 17,
                     "asw_address": [0,0]
+                }
+            },
+            "7": {
+                "address": "pastrains/track/turnout/4",
+                "current_state": {
+                    "state": "CLOSED",
+                    "position": 0
+                },
+                "states": {
+                    "THROWN": [255, 0, 0],
+                    "CLOSED": [0, 255, 0]
+                },
+                "io": "OUTPUT",
+                "type": "neopixel",
+                "args": {
+                    "pixel": 0
                 }
             }
     }

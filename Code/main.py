@@ -38,6 +38,10 @@ global config
 config = config_manager()
 config.load_config('config.json')
 
+global neo
+if config.settings["neopixel_count"] != 0:
+        neo = neopixel.NeoPixel(Pin(config.settings["neopixel_pin"]), config.settings["neopixel_count"])
+
 
 def sub_cb(topic, msg):
     if topic.decode() == config.settings["client_name"] + "/client_name":
@@ -165,11 +169,12 @@ def pin_input(device):
 
 
 def neopixel_process(device):
-    ##neo = neopixel.NeoPixel(Pin(config.devices[device]["args"]["pin"]), config.devices[device]["args"]["pixel_count"])
-    ##neo[config.devices[device]["args"]["pixel"]] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
-    ##neo.write()
-    pass ## TODO: Need to implement neopixel_process properly
-    
+    if config.settings["neopixel_count"] != 0:
+        neo[config.devices[device]["args"]["pixel"]] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
+        neo.write()
+        config.devices[device]["current_state"]["position"] = config.devices[device]["states"][config.devices[device]["current_state"]["state"]]
+        config.save_config()
+
 
 def rfid_process(device):
     rfid = PiicoDev_RFID(sda=Pin(config.devices[device]["args"]["sda"]), 
@@ -185,7 +190,7 @@ def rfid_process(device):
                 config.save_config()
                 print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
                 publish_mqtt(mqtt, config.devices[device]["address"], config.devices[device]["current_state"]["state"])
-## Need to fix addressing system TODO
+
 
 def button(device):
     if config.devices[device]["args"]["pullup"]:
@@ -212,7 +217,7 @@ def button(device):
                         return
             else:
                 print(f"Error: too many states in device {device} for button object")
- 
+
 
 def process_inputs():
     for device in config.devices:
