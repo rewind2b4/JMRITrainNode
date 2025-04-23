@@ -87,6 +87,7 @@ def check_mqtt_msg(mqtt):
 def publish_mqtt(mqtt, address, msg):
     mqtt.publish(address, msg, qos=1)
 
+
 def sub_mqtt(mqtt, address):
     mqtt.subscribe(address)
 
@@ -196,7 +197,6 @@ def button(device):
         sleep_ms(config.devices[device]["args"]["debounce"])
         pin_check = pin.value()
         if pin_check == config.devices[device]["args"]["button_trig"]:
-            #config.devices[device]["current_state"]["position"] = state
             current_state = config.devices[device]["current_state"]["state"]
             if len(config.devices[device]["states"]) == 2:
                 for button_state in config.devices[device]["states"]:
@@ -241,35 +241,17 @@ def process_outputs():
 
 
 if __name__ == "__main__":
-
     while True:
         wlan, mqtt = connect()
         if wlan == None:
             print("Connection Failed, retrying...")
             continue
-
-        ##for setting in config.settings:
-        ##    if setting == "client_name" or setting == "ip" or setting == "cycle_time":
-        ##        mqtt_address = str(config.settings["client_name"]) + "/" + str(setting)
-        ##        publish_mqtt(mqtt, mqtt_address, str(config.settings[setting]))
-        ##        print("Published", mqtt_address, config.settings[setting])
-        ##        if setting == "client_name":
-        ##            sub_mqtt(mqtt, mqtt_address)
-        ##            print("Subscribed to", mqtt_address)
-
         for device in config.devices:
             device_num = str(device)
             sub_mqtt(mqtt, config.devices[device]["address"])
             print("Subscribed to", config.devices[device]["address"])
 
-            ##for setting in config.devices[device]:
-            ##    mqtt_address = str(config.settings["client_name"]) + "/" + device_num + "/" + str(setting)
-            ##    publish_mqtt(mqtt, mqtt_address, str(config.devices[device][setting]))
-            ##    print("Published", mqtt_address, str(config.devices[device][setting]))
-            ##    sub_mqtt(mqtt, mqtt_address)
-            ##    print("Subscribed to", str(setting))
         counter = 0
-
         while wlan.isconnected():
             try:
                 start_time = ticks_us()
