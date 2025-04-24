@@ -1,17 +1,18 @@
 {
     "settings": {
-        "ssid": "House",
-        "password": "ag1l3mini",
-        "server_addr": "192.168.168.240",
+        "ssid": "Layout_MQTT",
+        "password": "20200527",
+        "server_addr": "192.168.1.120",
         "client_name": "TrainNode",
-        "MQTT_user": "mqtt-user",
-        "MQTT_password": "9te%BM3u$ps77dMoR$B7@DJyBZ",
+        "MQTT_user": "MQTT_USER",
+        "MQTT_password": "20200527",
         "MQTT_port": 1883,
         "ip": "192.168.168.238",
         "debug": true,
         "cycle_time": 1000,
         "neopixel_pin": 15,
-        "neopixel_count": 1
+        "neopixel_count": 1,
+        "device_poll_timeout_ms": 1000
     },
 
     "devices": {
@@ -50,7 +51,7 @@
                     "freq": 50,
                     "pin": 1,
                     "ramp": true,
-                    "step": 200
+                    "step": 500
                 }
             },
             "3": {
@@ -69,7 +70,7 @@
                     "freq": 50,
                     "pin": 2,
                     "ramp": true,
-                    "step": 200
+                    "step": 500
                 }
             },
             "4": {
@@ -107,7 +108,7 @@
                 }
             },
             "6": {
-                "address": "pastrains/track/rfid/0",
+                "address": "pastrains/track/reporter/0",
                 "current_state": {
                     "state": "NULL"      
                 },
@@ -134,6 +135,20 @@
                 "type": "neopixel",
                 "args": {
                     "pixel": 0
+                }
+            },
+            "8": {
+                "address": "pastrains/track/reporter/1",
+                "current_state": {
+                    "state": "NULL"      
+                },
+                "io": "INPUT",
+                "type": "rfid",
+                "args": {
+                    "bus": 0,
+                    "sda": 16,
+                    "scl": 17,
+                    "asw_address": [0,1]
                 }
             }
     }

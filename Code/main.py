@@ -183,13 +183,15 @@ def rfid_process(device):
                          bus=config.devices[device]["args"]["bus"])
     if rfid.tagPresent():
         id = rfid.readID()
-        print(id)
-        if id != config.devices[device]["current_state"]["state"]:
-            if id != '':
-                config.devices[device]["current_state"]["state"] = id
-                config.save_config()
-                print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
-                publish_mqtt(mqtt, config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+        if id != '':
+            config.devices[device]["current_state"]["state"] = id
+            config.save_config()
+            print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
+            publish_mqtt(mqtt, config.devices[device]["address"], config.devices[device]["current_state"]["state"])           
+            timeout_start = ticks_us()
+            while(rfid.readID() != ''):
+                if ticks_us() - timeout_start > (1000 * config.settings["device_poll_timeout_ms"]):
+                    return
 
 
 def button(device):
@@ -212,9 +214,11 @@ def button(device):
                         publish_mqtt(mqtt, config.devices[device]["address"], state_to_set)
                         print(config.devices[device]["type"], config.devices[device]["address"], config.devices[device]["current_state"]["state"])
                         config.save_config()
+                        timeout_start = ticks_us()
                         while pin.value() == config.devices[device]["args"]["button_trig"]:
-                            pass
-                        return
+                            if ticks_us() - timeout_start > (1000 * config.settings["device_poll_timeout_ms"]):
+                                return
+
             else:
                 print(f"Error: too many states in device {device} for button object")
 
