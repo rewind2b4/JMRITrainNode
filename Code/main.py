@@ -99,16 +99,19 @@ def sub_mqtt(mqtt, address):
 def connect():
     try:
         wlan = network.WLAN(network.STA_IF)
+        wlan.disconnect()
         wlan.active(True)
         wlan.connect(config.settings["ssid"], config.settings["password"])
         while wlan.isconnected() == False:
-            print('Waiting for connection to board...')
+            print('Waiting for connection to wifi...')
             sleep(1)
         ip = wlan.ifconfig()[0]
         print(f'Connected on {ip}')
         config.settings["ip"] = ip    
         config.save_config()
         try:
+            if wlan.isconnected() == False:
+                return
             print("Connecting to MQTT Server")
             mqtt = MQTTClient(client_id = config.settings["client_name"], server = config.settings["server_addr"], port = config.settings["MQTT_port"], user = config.settings["MQTT_user"], password = config.settings["MQTT_password"])
             mqtt.connect()
